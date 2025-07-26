@@ -1,0 +1,104 @@
+/* App.css */
+
+/* General Navbar Wrapper */
+.custom-navbar {
+  background-color: #e7f5ec; /* light green tone */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo image */
+.navbar-brand img {
+  border-radius: 50%;
+  border: 2px solid #198754; /* Bootstrap green */
+}
+
+/* Nav Elements Container */
+.nav-elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translate(-700px, 0px); */
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+/* Nav links */
+#element {
+  text-decoration: none;
+  color: #146c43;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+#element:hover {
+  background-color: #d1f0dc;
+  color: #0a3622;
+  border-radius: 8px;
+}
+
+.navbar-link {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #2a7f62; /* Your brand color */
+}
+
+
+
+/* Search form */
+.search1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  transform: translateX(0px);
+}
+
+.searchform {
+  padding: 6px 12px;
+  border: 1px solid #198754;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .custom-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search1 {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .btn,
+  .searchform {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,170 @@
+/* About Page Styling */
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  color: #2a7f62;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Section Box Styling */
+.about-section-box {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.about-section-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 30px;
+}
+
+.reverse-layout {
+  flex-direction: row-reverse;
+}
+
+.about-section-text {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.about-section-image {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.section-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.about-section-text h2 {
+  color: #2a7f62;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.section-icon {
+  margin-right: 10px;
+  color: #2a7f62;
+}
+
+.clinic-features li {
+  margin-bottom: 10px;
+  list-style-type: none;
+  padding-left: 25px;
+  position: relative;
+}
+
+.clinic-features li svg {
+  position: absolute;
+  left: 0;
+  color: #2a7f62;
+}
+
+.dr-qualifications {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.dr-qualifications h4 {
+  color: #2a7f62;
+  margin-bottom: 10px;
+}
+
+.dr-qualifications ul {
+  padding-left: 20px;
+}
+
+.dr-qualifications li {
+  margin-bottom: 8px;
+}
+
+/* Philosophy Section */
+.philosophy-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.philosophy-section h2 {
+  color: #2a7f62;
+  margin-bottom: 30px;
+}
+
+.philosophy-points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.philosophy-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-5px);
+}
+
+.philosophy-icon {
+  font-size: 2.5rem;
+  color: #2a7f62;
+  margin-bottom: 15px;
+}
+
+.philosophy-card h3 {
+  color: #2a7f62;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-section-content {
+    flex-direction: column;
+  }
+  
+  .reverse-layout {
+    flex-direction: column;
+  }
+  
+  .about-section-text, 
+  .about-section-image {
+    min-width: 100%;
+  }
+  
+  .philosophy-card {
+    width: 100%;
+  }
+}
