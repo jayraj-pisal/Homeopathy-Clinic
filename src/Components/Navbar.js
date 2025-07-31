@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
-import log from '../logo.jpg'; // Ensure the path to the logo is correct
-import { Link } from 'react-router-dom';
-// import { Link as ScrollLink } from 'react-scroll';
-import SearchBar from './SearchBar';
-// import { Link as ScrollLink } from 'react-router-dom';
+import log from '../logo.jpg'; 
+import { Link } from 'react-scroll';
+import '../Stylesheet/Navbar.css'; 
 
 export default function Navbar() {
   return (
@@ -12,46 +10,52 @@ export default function Navbar() {
     <div className='page2'>     
       <nav className="navbar custom-navbar">
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/">
+    <Link className="navbar-brand" to="home"
+    >
     <div>
-    <img src={log} alt='logo' height='70'></img>
+    <img src={log} alt='logo' height='70'
+    ></img>
   </div>
       </Link>
   </div>
-    <div className="nav-elements" id='elements'>
+    <nav className="nav-elements" id='elements'>
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav1" id='element' to="/">Home</Link>
+          <Link className="nav1" id='element' to="home"
+           smooth={true} 
+            duration={500} 
+            offset={-80}
+            >Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav2" id='element' to="/about" >About Us</Link>
+          <Link className="nav2" id='element' to="about"   
+            smooth={true} 
+            duration={500} 
+            offset={-80} >About Us</Link>
         </li>  
         <li className="nav-item">
           <Link  className="navbar-link" id='element'
-              to="/services" 
+              to="services" 
               smooth={true} 
               duration={500} 
               offset={-80} // Adjust this if you have a fixed header
             >Services</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav4" id='element' to="/media">Media</Link>
+          <Link className="nav4" id='element' to="media"
+              smooth={true} 
+              duration={500} 
+              offset={-80}>Media</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav5" id='element' to="/experience">Experiences</Link>
-        </li>
-        <li className="nav-item">
-          <a className="nav6" id='element' href="/">FAQ's</a>
+          <Link className="nav5" id='element' to="testimonials"
+            smooth={true} 
+              duration={500} 
+              offset={-80}>Testimonials</Link>
         </li>
         </ul>
-     </div>
-            <div>  
-           <div className="search1" role="search">
-              <SearchBar />
-             </div>
-         
-         </div>
-</nav>
+        </nav>
+     </nav>
     </div>
     </div>
 </>

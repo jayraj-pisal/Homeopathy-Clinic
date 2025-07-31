@@ -1,170 +1,363 @@
-/* About Page Styling */
-.about-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+/* About.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% { 
+    transform: scale(1.05);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out forwards;
+}
+
+/* Base Styles */
+.about-page {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  transform: translate(0px, 100px);
+  
+}
+
+/* Header Styles */
 .about-header {
   text-align: center;
-  margin-bottom: 40px;
-  padding: 20px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4f0f8 100%);
+  border-radius: 15px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.about-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
 }
 
 .about-header h1 {
-  font-size: 2.5rem;
-  color: #2a7f62;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-.about-header p {
+.header-subtitle {
   font-size: 1.2rem;
-  color: #555;
+  color: #4a6b8b;
+  max-width: 600px;
+  margin: 10px auto;
+  font-weight: 500;
 }
 
-/* Section Box Styling */
+/* Section Box Styles */
 .about-section-box {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  margin-bottom: 40px;
-  overflow: hidden;
-  border: 1px solid #e0e0e0;
+  margin: 60px 0;
+  padding: 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4f0f8 100%);;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  opacity: 0; /* Start hidden for animation */
+  animation-fill-mode: forwards;
+  transform: translate(0px, -55px);
 }
 
 .about-section-content {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  padding: 30px;
+  gap: 40px;
 }
 
 .reverse-layout {
   flex-direction: row-reverse;
 }
 
-.about-section-text {
-  flex: 1;
-  min-width: 300px;
-  padding: 20px;
-}
-
-.about-section-image {
-  flex: 1;
-  min-width: 300px;
-  padding: 20px;
-  text-align: center;
-}
-
-.section-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-
-.about-section-text h2 {
-  color: #2a7f62;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-}
-
-.section-icon {
-  margin-right: 10px;
-  color: #2a7f62;
-}
-
-.clinic-features li {
-  margin-bottom: 10px;
-  list-style-type: none;
-  padding-left: 25px;
+/* Text Content Styles */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
   position: relative;
 }
 
-.clinic-features li svg {
+.section-title::after {
+  content: '';
   position: absolute;
+  bottom: -10px;
   left: 0;
-  color: #2a7f62;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
 }
 
-.dr-qualifications {
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
+.section-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.dr-qualifications h4 {
-  color: #2a7f62;
-  margin-bottom: 10px;
+/* Image Styles */
+.about-section-image {
+  flex: 1;
+  min-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-hover:hover {
+  transform: scale(1.02);
+}
+
+.section-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dr-photo {
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* List Styles */
+.clinic-features {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.feature-item {
+  padding: 12px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px dashed #e0e0e0;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateX(10px);
+  color: #2c3e50;
+}
+
+.feature-icon {
+  margin-right: 10px;
+  font-size: 1.3rem;
 }
 
 .dr-qualifications ul {
-  padding-left: 20px;
+  list-style: none;
+  padding: 0;
 }
 
-.dr-qualifications li {
-  margin-bottom: 8px;
+.qualification-item {
+  padding: 8px 0;
+  font-size: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+.qualification-icon {
+  color: #4facfe;
+  font-weight: bold;
+  margin-right: 8px;
 }
 
 /* Philosophy Section */
 .philosophy-section {
   text-align: center;
-  margin-top: 50px;
+  margin: 80px 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.3s forwards;
 }
 
-.philosophy-section h2 {
-  color: #2a7f62;
-  margin-bottom: 30px;
+.philosophy-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 50px;
 }
 
 .philosophy-points {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .philosophy-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 25px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
   width: 280px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: bounceIn 0.8s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.2s);
 }
 
 .philosophy-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .philosophy-icon {
   font-size: 2.5rem;
-  color: #2a7f62;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .philosophy-card h3 {
-  color: #2a7f62;
-  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  color: #2c3e50;
+  margin-bottom: 15px;
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .about-section-content {
-    flex-direction: column;
-  }
-  
+  .about-section-content, 
   .reverse-layout {
     flex-direction: column;
   }
   
-  .about-section-text, 
   .about-section-image {
-    min-width: 100%;
+    width: 100%;
+    margin-bottom: 30px;
   }
   
-  .philosophy-card {
-    width: 100%;
+  .philosophy-points {
+    flex-direction: column;
+    align-items: center;
   }
+  
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* Image Modal Styles */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Add cursor pointer to clickable images */
+.image-hover {
+  cursor: pointer;
+}
+
+/* Animation for modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

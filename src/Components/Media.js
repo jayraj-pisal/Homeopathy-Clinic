@@ -1,179 +1,126 @@
-import React, { useState, useRef } from 'react';
-import { FaCloudUploadAlt, FaImage, FaVideo, FaTrashAlt, FaCheckCircle } from 'react-icons/fa';
-// import './Media.css';
+import React, { useState, useEffect, useRef } from 'react';
+import { Element } from 'react-scroll';
+import '../Stylesheet/Media.css';
 
-const Media = () => {
-  const [mediaFiles, setMediaFiles] = useState([]);
-  const [isDragging, setIsDragging] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState({});
-  const fileInputRef = useRef(null);
+export default function Media() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const sliderRef = useRef(null);
+  
+  const mediaItems = [
+    {
+      type: 'image',
+      src: 'https://source.unsplash.com/random/800x500?nature',
+      alt: 'Nature',
+      caption: 'Beautiful Nature'
+    },
+    {
+      type: 'image',
+      src: 'https://source.unsplash.com/random/800x500?city',
+      alt: 'City',
+      caption: 'Urban Landscape'
+    },
+    {
+      type: 'video',
+      src: 'https://www.example.com/sample-video.mp4',
+      alt: 'Sample Video',
+      caption: 'Demo Video'
+    },
+    {
+      type: 'image',
+      src: 'https://source.unsplash.com/random/800x500?technology',
+      alt: 'Technology',
+      caption: 'Tech Innovation'
+    },
+    {
+      type: 'image',
+      src: 'https://source.unsplash.com/random/800x500?travel',
+      alt: 'Travel',
+      caption: 'Adventure Awaits'
+    }
+  ];
 
-  const handleFileChange = (e) => {
-    const files = Array.from(e.target.files);
-    processFiles(files);
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setCurrentIndex(prev => (prev + 1) % mediaItems.length);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, mediaItems.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
+  const goToPrev = () => {
+    setCurrentIndex(prev => (prev - 1 + mediaItems.length) % mediaItems.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    const files = Array.from(e.dataTransfer.files);
-    processFiles(files);
-  };
-
-  const processFiles = (files) => {
-    const validFiles = files.filter(file => 
-      file.type.startsWith('image/') || file.type.startsWith('video/')
-    );
-    
-    const newMedia = validFiles.map(file => ({
-      id: Date.now() + Math.random().toString(36).substr(2, 9),
-      file,
-      type: file.type.startsWith('image/') ? 'image' : 'video',
-      name: file.name,
-      size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
-      status: 'pending'
-    }));
-    
-    setMediaFiles([...mediaFiles, ...newMedia]);
-    simulateUpload(newMedia);
-  };
-
-  const simulateUpload = (files) => {
-    files.forEach(file => {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.random() * 10;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          setMediaFiles(prev => prev.map(item => 
-            item.id === file.id ? {...item, status: 'completed'} : item
-          ));
-        }
-        setUploadProgress(prev => ({...prev, [file.id]: progress}));
-      }, 300);
-    });
-  };
-
-  const removeFile = (id) => {
-    setMediaFiles(mediaFiles.filter(file => file.id !== id));
-    setUploadProgress(prev => {
-      const newProgress = {...prev};
-      delete newProgress[id];
-      return newProgress;
-    });
-  };
-
-  const triggerFileInput = () => {
-    fileInputRef.current.click();
+  const goToNext = () => {
+    setCurrentIndex(prev => (prev + 1) % mediaItems.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   return (
-    <div className="media-container">
-      <h1 className="media-title">Media Gallery</h1>
-      <p className="media-subtitle">Upload and manage your photos & videos</p>
-      
-      {/* Upload Area */}
-      <div 
-        className={`upload-area ${isDragging ? 'dragging' : ''}`}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={triggerFileInput}
-      >
-        <input 
-          type="file" 
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          multiple
-          accept="image/*,video/*"
-          style={{ display: 'none' }}
-        />
-        <FaCloudUploadAlt className="upload-icon" />
-        <h3>Drag & Drop files here</h3>
-        <p>or</p>
-        <button className="upload-button">
-          Browse Files
-        </button>
-        <p className="formats-info">Supports: JPG, PNG, GIF, MP4, MOV (Max 50MB each)</p>
-      </div>
-      
-      {/* Media Grid */}
-      <div className="media-grid">
-        {mediaFiles.length === 0 ? (
-          <div className="empty-state">
-            <p>No media files uploaded yet</p>
-          </div>
-        ) : (
-          mediaFiles.map(media => (
-            <div key={media.id} className="media-card">
-              <div className="media-preview">
-                {media.type === 'image' ? (
-                  <div className="image-container">
-                    <img 
-                      src={URL.createObjectURL(media.file)} 
-                      alt={media.name} 
-                      className="media-thumbnail"
-                    />
-                  </div>
+    <Element name='media' className='media-page'>
+      <div className='media-container'>
+        <h1 className='media-header'>Media Gallery</h1>
+        
+        <div className='media-slider-container'>
+          <div 
+            className='media-slider'
+            ref={sliderRef}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {mediaItems.map((item, index) => (
+              <div key={index} className='media-slide'>
+                {item.type === 'image' ? (
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    className='media-image'
+                    loading='lazy'
+                  />
                 ) : (
-                  <div className="video-container">
-                    <video className="media-thumbnail" muted>
-                      <source src={URL.createObjectURL(media.file)} type={media.file.type} />
-                    </video>
-                    <div className="play-icon">▶</div>
-                  </div>
+                  <video 
+                    src={item.src} 
+                    className='media-video'
+                    controls
+                    autoPlay={currentIndex === index}
+                    muted
+                    loop
+                  />
                 )}
-                
-                <div className="media-overlay">
-                  <button 
-                    className="delete-button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      removeFile(media.id);
-                    }}
-                  >
-                    <FaTrashAlt />
-                  </button>
-                </div>
-                
-                {media.status === 'completed' && (
-                  <div className="upload-complete">
-                    <FaCheckCircle className="check-icon" />
-                  </div>
-                )}
+                <div className='media-caption'>{item.caption}</div>
               </div>
-              
-              <div className="media-info">
-                <p className="media-name">{media.name}</p>
-                <p className="media-size">{media.size}</p>
-                {uploadProgress[media.id] && (
-                  <div className="progress-bar-container">
-                    <div 
-                      className="progress-bar"
-                      style={{ width: `${uploadProgress[media.id]}%` }}
-                    ></div>
-                    <span className="progress-text">
-                      {Math.round(uploadProgress[media.id])}%
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))
-        )}
+            ))}
+          </div>
+          
+          <button className='slider-button prev' onClick={goToPrev}>
+            &#10094;
+          </button>
+          <button className='slider-button next' onClick={goToNext}>
+            &#10095;
+          </button>
+        </div>
+        
+        <div className='media-dots'>
+          {mediaItems.map((_, index) => (
+            <span 
+              key={index}
+              className={`dot ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </Element>
   );
-};
-
-export default Media;
+}

@@ -3,24 +3,29 @@
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-     transform: translate(0px, 5px);
+  transform: translate(0px, 80px);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
 }
+
+/* Font Import (Add to your HTML head or main CSS file) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Hero Section */
 .hero-section {
   display: flex;
-  min-height: 80vh;
+  min-height: 90vh; /* Increased height */
   background: linear-gradient(135deg, #f5f7fa 0%, #e4f0f5 100%);
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 30px 30px; /* More rounded corners */
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Softer shadow */
   transform: translate(0px, 10px);
+  animation: fadeIn 1s ease-out;
 }
 
 .hero-content {
   flex: 1;
-  padding: 2rem;
+  padding: 3rem; /* More padding */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,35 +35,76 @@
 
 .hero-image {
   flex: 1;
-  background: url("https://wallpapers.com/images/featured/nice-background-61m89tafknmauh0h.jpg") center/cover no-repeat;
+  background: url("https://content3.jdmagicbox.com/v2/ahmednagar/dc/9999px241.x241.1238234406z9q8i2.dc/catalogue/dr-zanje-s-homoeopathy-hospital-savedi-ahmednagar-r3jb9.jpg") center/cover no-repeat;
   opacity: 0.9;
+  animation: kenburns 30s infinite alternate; /* Ken Burns effect */
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.05) translate(-10px, -10px);
+  }
 }
 
 .welcome-text {
-  font-size: 3.5rem;
+  font-size: 4rem; /* Larger text */
   font-weight: 700;
   color: #2a7f62;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(42, 127, 98, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(42, 127, 98, 0.5);
+  }
 }
 
 .clinic-name {
   color: #1a5c45;
   position: relative;
   display: inline-block;
+  font-weight: 800;
+  background: linear-gradient(90deg, #1a5c45, #2a7f62);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 5s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .clinic-name::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: #2a7f62;
+  height: 4px;
+  background: linear-gradient(90deg, #2a7f62, #1a5c45);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .clinic-name:hover::after {
@@ -67,30 +113,38 @@
 }
 
 .tagline {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Slightly larger */
   color: #555;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  margin-bottom: 2.5rem;
+  max-width: 700px; /* Wider text block */
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  animation: fadeInUp 1s ease-out 0.3s both;
 }
 
 .appointment-btn {
-  background: #2a7f62;
+  background: linear-gradient(135deg, #2a7f62, #1a5c45);
   color: white;
   border: none;
-  padding: 15px 30px;
-  font-size: 1.1rem;
+  padding: 18px 36px; /* Larger button */
+  font-size: 1.2rem;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(42, 127, 98, 0.3);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 6px 20px rgba(42, 127, 98, 0.3);
   position: relative;
   overflow: hidden;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: pulse 2s infinite 1s;
 }
 
 .appointment-btn:hover {
-  background: #1a5c45;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(42, 127, 98, 0.4);
+  background: linear-gradient(135deg, #1a5c45, #2a7f62);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(42, 127, 98, 0.4);
 }
 
 .appointment-btn::before {
@@ -100,8 +154,8 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: 0.8s;
 }
 
 .appointment-btn:hover::before {
@@ -115,91 +169,126 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(5px); /* Blur effect behind modal */
+  animation: fadeIn 0.3s ease-out;
 }
 
 .appointment-form {
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: 2.5rem;
+  border-radius: 15px;
   width: 90%;
-  max-width: 500px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+  max-width: 550px; /* Slightly wider */
+  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
   position: relative;
+  animation: modalSlideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .close-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   color: #777;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .close-btn:hover {
   color: #333;
+  background: #f5f5f5;
+  transform: rotate(90deg);
 }
 
 .appointment-form h2 {
   color: #2a7f62;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   color: #555;
   font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: border 0.3s;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: #2a7f62;
   outline: none;
+  box-shadow: 0 0 0 3px rgba(42, 127, 98, 0.2);
 }
 
 .form-group textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 12px;
-  background: #2a7f62;
+  padding: 15px;
+  background: linear-gradient(135deg, #2a7f62, #1a5c45);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(42, 127, 98, 0.3);
 }
 
 .submit-btn:hover {
-  background: #1a5c45;
+  background: linear-gradient(135deg, #1a5c45, #2a7f62);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(42, 127, 98, 0.4);
 }
 
 /* Features Section */
@@ -207,99 +296,119 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 4rem 2rem;
-  gap: 2rem;
+  padding: 5rem 2rem; /* More padding */
+  gap: 2.5rem; /* Larger gap */
+  background: url('https://www.transparenttextures.com/patterns/soft-circle-scales.png') #f9f9f9;
 }
 
 .feature-card {
   flex: 1;
-  min-width: 250px;
+  min-width: 280px; /* Slightly wider cards */
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #2a7f62, #1a5c45);
+  transition: height 0.3s ease;
+  z-index: -1;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.feature-card:hover::before {
+  height: 100%;
+}
+
+.feature-card:hover .feature-icon {
+  color: white;
+  transform: scale(1.2) rotate(10deg);
+}
+
+.feature-card:hover h3,
+.feature-card:hover p {
+  color: white;
 }
 
 .feature-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
   display: inline-block;
+  transition: all 0.4s ease;
+  color: #2a7f62;
 }
 
 .feature-card h3 {
   color: #2a7f62;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .feature-card p {
   color: #666;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
 }
 
 /* Animations */
-.animate-pop-in {
-  animation: popIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  opacity: 0;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.welcome-text {
-  animation-delay: 0.2s;
-}
-
-.tagline {
-  animation-delay: 0.4s;
-}
-
-.appointment-btn {
-  animation-delay: 0.6s;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes popIn {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.9);
+  }
+  80% {
+    transform: translateY(-5px) scale(1.05);
   }
   100% {
     opacity: 1;
-    transform: none;
+    transform: translateY(0) scale(1);
   }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.5s ease-out forwards;
-}
-
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.pulse-animate {
-  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(42, 127, 98, 0.4);
   }
-  50% {
-    transform: scale(1.1);
+  70% {
+    box-shadow: 0 0 0 15px rgba(42, 127, 98, 0);
   }
   100% {
-    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(42, 127, 98, 0);
   }
 }
 
@@ -308,23 +417,45 @@
   .hero-section {
     flex-direction: column;
     min-height: auto;
+    border-radius: 0 0 20px 20px;
   }
   
   .hero-image {
     min-height: 300px;
+    order: -1; /* Image on top */
   }
   
   .welcome-text {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+  }
+  
+  .tagline {
+    font-size: 1.5rem;
   }
   
   .features-section {
-    flex-direction: column;
-    align-items: center;
+    padding: 3rem 1.5rem;
+    gap: 1.5rem;
   }
   
   .feature-card {
     width: 100%;
     max-width: 350px;
+    padding: 2rem 1.5rem;
   }
+}
+
+/* Floating animation for visual interest */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Add this to elements you want to float */
+.floating {
+  animation: float 4s ease-in-out infinite;
 }

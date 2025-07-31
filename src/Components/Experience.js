@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import { FaStar, FaUserCircle, FaCamera, FaTimes } from 'react-icons/fa';
-// import './Experience.css';
+import React, { useRef, useEffect, useState } from 'react';
+import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Element } from 'react-scroll';
+import '../Stylesheet/Experience.css'; // Create this CSS file
 
-const Experience = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
-  const [name, setName] = useState('');
-  const [feedback, setFeedback] = useState('');
-  const [photo, setPhoto] = useState(null);
-  const [preview, setPreview] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [testimonials, setTestimonials] = useState([
+const HorizontalScroll = () => {
+  const scrollRef = useRef(null);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const testimonials = [
+    // ... your testimonials array ...
     {
       id: 1,
       name: "Rahul Sharma",
@@ -26,177 +25,167 @@ const Experience = () => {
       feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
       photo: "/images/patient2.jpg",
       date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
+    },
+    {
+      id: 2,
+      name: "Priya Patel",
+      rating: 4,
+      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
+      photo: "/images/patient2.jpg",
+      date: "2 June 2023"
     }
-  ]);
+  ];
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPhoto(file);
-      setPreview(URL.createObjectURL(file));
+  // Auto-scroll effect (same as before)
+  useEffect(() => {
+    if (!autoScroll || isHovered) return;
+    
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+        
+        if (scrollLeft >= maxScroll - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [autoScroll, isHovered]);
+
+  const scroll = (direction) => {
+    setAutoScroll(false);
+    setTimeout(() => setAutoScroll(true), 10000);
+    
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -300 : 300,
+        behavior: 'smooth'
+      });
     }
-  };
-
-  const removePhoto = () => {
-    setPhoto(null);
-    setPreview('');
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newTestimonial = {
-      id: Date.now(),
-      name,
-      rating,
-      feedback,
-      photo: preview || "/images/default-avatar.jpg",
-      date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-    };
-    setTestimonials([newTestimonial, ...testimonials]);
-    setSubmitted(true);
-    // Reset form
-    setName('');
-    setFeedback('');
-    setRating(0);
-    setPhoto(null);
-    setPreview('');
-  };
-
-  const resetForm = () => {
-    setSubmitted(false);
   };
 
   return (
-    <div className="experience-container">
-      <h1 className="experience-title">Patient Experiences</h1>
-      <p className="experience-subtitle">Share your healing journey with others</p>
+    <Element name="testimonials" className="testimonials-section">
+      <div className="testimonials-container">
+        <h2 className="section-title1">Patient Testimonials</h2>
+        
+        <div className="carousel-wrapper">
+          <button 
+            onClick={() => scroll('left')}
+            className="nav-button1 left"
+            aria-label="Scroll left"
+          >
+            <FaChevronLeft />
+          </button>
 
-      {!submitted ? (
-        <div className="feedback-form-container">
-          <h2>Share Your Experience</h2>
-          <form onSubmit={handleSubmit} className="feedback-form">
-            <div className="form-group">
-              <label htmlFor="name">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                placeholder="Enter your name"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Your Rating</label>
-              <div className="star-rating">
-                {[...Array(5)].map((star, index) => {
-                  const ratingValue = index + 1;
-                  return (
-                    <label key={index}>
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={ratingValue}
-                        onClick={() => setRating(ratingValue)}
-                      />
-                      <FaStar
-                        className="star"
-                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                        size={30}
-                        onMouseEnter={() => setHover(ratingValue)}
-                        onMouseLeave={() => setHover(0)}
-                      />
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="feedback">Your Feedback</label>
-              <textarea
-                id="feedback"
-                value={feedback}
-                onChange={(e) => setFeedback(e.target.value)}
-                required
-                placeholder="Share your experience with our homeopathy treatment"
-                rows="5"
-              ></textarea>
-            </div>
-
-            <div className="form-group">
-              <label>Add Photo (Optional)</label>
-              <div className="photo-upload">
-                {preview ? (
-                  <div className="photo-preview">
-                    <img src={preview} alt="Preview" />
-                    <button type="button" onClick={removePhoto} className="remove-photo">
-                      <FaTimes />
-                    </button>
-                  </div>
-                ) : (
-                  <label className="upload-label">
-                    <FaCamera className="camera-icon" />
-                    <span>Add Photo</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handlePhotoChange}
-                      style={{ display: 'none' }}
+          <div
+            ref={scrollRef}
+            className="testimonials-carousel"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-card">
+                <div className="testimonial-header">
+                  <div className="patient-avatar">
+                    <img 
+                      src={testimonial.photo} 
+                      alt={testimonial.name} 
+                      // onError={(e) => {
+                      //   e.target.src = 'https://via.placeholder.com/80';
+                      // }
+                    // }
                     />
-                  </label>
-                )}
+                  </div>
+                  <div className="patient-info">
+                    <h3>{testimonial.name}</h3>
+                    <div className="patient-rating">
+                      {[...Array(5)].map((_, index) => (
+                        <FaStar
+                          key={index}
+                          color={index < testimonial.rating ? "#FFD700" : "#E0E0E0"}
+                        />
+                      ))}
+                    </div>
+                    <p className="testimonial-date">{testimonial.date}</p>
+                  </div>
+                </div>
+                <div className="testimonial-body">
+                  <p>"{testimonial.feedback}"</p>
+                </div>
+                <div className="testimonial-quote-icon">”</div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <button type="submit" className="submit-button">
-              Share Experience
-            </button>
-          </form>
-        </div>
-      ) : (
-        <div className="thank-you-message">
-          <h2>Thank You for Sharing Your Experience!</h2>
-          <p>Your feedback helps us improve our services and helps other patients make informed decisions.</p>
-          <button onClick={resetForm} className="submit-button">
-            Share Another Experience
+          <button 
+            onClick={() => scroll('right')}
+            className="nav-button1 right"
+            aria-label="Scroll right"
+          >
+            <FaChevronRight />
           </button>
         </div>
-      )}
 
-      <div className="testimonials-container">
-        <h2>What Our Patients Say</h2>
-        <div className="testimonials-grid">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="testimonial-card">
-              <div className="testimonial-header">
-                <div className="patient-avatar">
-                  <img src={testimonial.photo} alt={testimonial.name} />
-                </div>
-                <div className="patient-info">
-                  <h3>{testimonial.name}</h3>
-                  <div className="patient-rating">
-                    {[...Array(5)].map((star, index) => (
-                      <FaStar
-                        key={index}
-                        className="star"
-                        color={index < testimonial.rating ? "#ffc107" : "#e4e5e9"}
-                      />
-                    ))}
-                  </div>
-                  <p className="testimonial-date">{testimonial.date}</p>
-                </div>
-              </div>
-              <div className="testimonial-body">
-                <p>{testimonial.feedback}</p>
-              </div>
-            </div>
-          ))}
+        <div className="auto-scroll-indicator">
+          <div className={`indicator-dot ${autoScroll && !isHovered ? 'active' : ''}`} />
+          <small>{autoScroll && !isHovered ? 'Auto-scrolling' : 'Scroll paused'}</small>
         </div>
       </div>
-    </div>
+    </Element>
   );
 };
 
-export default Experience;
+export default HorizontalScroll;

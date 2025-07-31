@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Element } from 'react-scroll';
+import '../Stylesheet/Home.css'; // Optional if you want to style the Home component
 
 const Home = () => {
   const [showAppointmentForm, setShowAppointmentForm] = useState(false);
@@ -10,10 +12,12 @@ const Home = () => {
   return (
     <div className="home-container my-5">
       {/* Hero Section */}
+        <Element name="home" >
       <section className="hero-section">
         <div className="hero-content">
+        
           <h1 className="welcome-text animate-pop-in">
-            Welcome to <span className="clinic-name">Zanje Homeopathy</span>
+            <span className="clinic-name">Dr.Zanje's Homeopathy Clinic</span>
           </h1>
           <p className="tagline animate-pop-in">
             Natural Healing for Complete Wellness
@@ -27,7 +31,7 @@ const Home = () => {
         </div>
         <div className="hero-image"></div>
       </section>
-
+</Element>
       {/* Appointment Form Modal */}
       {showAppointmentForm && (
         <div className="modal-overlay">
