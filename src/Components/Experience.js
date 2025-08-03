@@ -27,7 +27,7 @@ const HorizontalScroll = () => {
       date: "2 June 2023"
     },
     {
-      id: 2,
+      id: 3,
       name: "Priya Patel",
       rating: 4,
       feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
@@ -35,7 +35,7 @@ const HorizontalScroll = () => {
       date: "2 June 2023"
     },
     {
-      id: 2,
+      id: 4,
       name: "Priya Patel",
       rating: 4,
       feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
@@ -43,7 +43,7 @@ const HorizontalScroll = () => {
       date: "2 June 2023"
     },
     {
-      id: 2,
+      id: 5,
       name: "Priya Patel",
       rating: 4,
       feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
@@ -51,31 +51,7 @@ const HorizontalScroll = () => {
       date: "2 June 2023"
     },
     {
-      id: 2,
-      name: "Priya Patel",
-      rating: 4,
-      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
-      photo: "/images/patient2.jpg",
-      date: "2 June 2023"
-    },
-    {
-      id: 2,
-      name: "Priya Patel",
-      rating: 4,
-      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
-      photo: "/images/patient2.jpg",
-      date: "2 June 2023"
-    },
-    {
-      id: 2,
-      name: "Priya Patel",
-      rating: 4,
-      feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",
-      photo: "/images/patient2.jpg",
-      date: "2 June 2023"
-    },
-    {
-      id: 2,
+      id: 6,
       name: "Priya Patel",
       rating: 4,
       feedback: "Excellent experience. My skin condition improved significantly within weeks of homeopathic treatment.",

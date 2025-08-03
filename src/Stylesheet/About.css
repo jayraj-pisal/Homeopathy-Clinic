@@ -67,7 +67,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  transform: translate(0px, 100px);
+  transform: translate(0px, 50px);
   
 }
 
@@ -197,10 +197,12 @@
   align-items: center;
   transition: all 0.3s ease;
 }
-
+a {
+  color: #0b89f7 ;
+}
 .feature-item:hover {
   transform: translateX(10px);
-  color: #2c3e50;
+  color: #225282;
 }
 
 .feature-icon {
@@ -251,7 +253,7 @@
 
 .philosophy-card {
   background: white;
-  padding: 30px;
+  /* padding: 30px; */
   border-radius: 15px;
   width: 280px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);

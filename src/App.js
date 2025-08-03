@@ -1,5 +1,4 @@
 import './App.css';
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import About from './Components/About';
@@ -7,7 +6,7 @@ import Home from './Components/Home';
 import Services from './Components/Services';
 import Media from './Components/Media';
 import Experience from './Components/Experience';
-
+import Futter from './Components/Futter';
 
 
 function App() {
@@ -19,10 +18,11 @@ function App() {
           <Navbar />
       </header>         
           <Home />  
-          <Services />
-          <About />    
+          <About />   
+           <Services /> 
           <Media />
           <Experience />
+          <Futter /> 
    </div>
   </BrowserRouter>
     </>

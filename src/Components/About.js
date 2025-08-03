@@ -15,10 +15,10 @@ const About1 = () => {
   };
 
   return (
-   
+     <Element name="about">
     <div className="about-page">
       {/* Image Modal */}
-       <Element name="about">
+     
       {selectedImage && (
         <div className="image-modal" onClick={closeModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -26,7 +26,7 @@ const About1 = () => {
             <img src={selectedImage} alt="Enlarged view" className="modal-image" />
           </div>
         </div>
-      )}</Element>
+      )}
 
       {/* Page Header */}
       <div className="about-header animate-fade-in">
@@ -52,7 +52,7 @@ const About1 = () => {
               modern diagnostic techniques to provide comprehensive care.
             </p>
             <ul className="clinic-features">
-              <li className="feature-item">
+              {/* <li className="feature-item">
                 <span className="feature-icon">🌿</span> 100% natural treatments with no side effects
               </li>
               <li className="feature-item">
@@ -60,6 +60,9 @@ const About1 = () => {
               </li>
               <li className="feature-item">
                 <span className="feature-icon">🏆</span> Certified and experienced homeopathic practitioners
+              </li> */}
+              <li className="feature-item">
+                <a href='https://www.justdial.com/Pune/Dr-Zanjes-Homeopathy-Clinic-Hadapsar/020PXX20-XX20-161117204331-I9Q1_BZDET' target="_blank" rel="noopener noreferrer"><p>For More Ditails</p></a>
               </li>
             </ul>
           </div>
@@ -144,7 +147,7 @@ const About1 = () => {
         </div>
       </div>
     </div>
-  
+  </Element>
   );
 };
 
