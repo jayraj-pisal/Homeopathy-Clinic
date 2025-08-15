@@ -7,7 +7,7 @@ import Services from './Components/Services';
 import Media from './Components/Media';
 import Experience from './Components/Experience';
 import Futter from './Components/Futter';
-
+import WhatsAppButton from './Components/Whatsapp';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
            <Services /> 
           <Media />
           <Experience />
+          <WhatsAppButton />
           <Futter /> 
    </div>
   </BrowserRouter>

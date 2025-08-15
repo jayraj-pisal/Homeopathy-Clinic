@@ -74,6 +74,7 @@ const Home = () => {
             <button 
               className="appointment-btn animate-pop-in"
               onClick={toggleAppointmentForm}
+               smooth={true} 
             >
               Book an Appointment
             </button>

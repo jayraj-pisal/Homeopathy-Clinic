@@ -67,20 +67,20 @@ const HorizontalScroll12 = () => {
     }
   ];
 
-  // Modified auto-scroll effect
+  // Modified auto-scroll effect with mobile detection
   useEffect(() => {
     if (!autoScroll || isHovered) return;
-    
+
     const interval = setInterval(() => {
       if (scrollRef.current) {
-        const cardWidth = 350; // Match this with your CSS card width
+        const cardWidth = window.innerWidth <= 768 ? window.innerWidth : 280; // Adjust card width for mobile
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
         const maxScroll = scrollWidth - clientWidth;
         
         if (scrollLeft >= maxScroll - 10) {
           scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          scrollRef.current.scrollBy({ left: cardWidth + 25, behavior: 'smooth' }); // cardWidth + gap
+          scrollRef.current.scrollBy({ left: cardWidth + (window.innerWidth > 768 ? 20 : 0), behavior: 'smooth' });
         }
       }
     }, 3000);
@@ -93,20 +93,18 @@ const HorizontalScroll12 = () => {
     setTimeout(() => setAutoScroll(true), 10000);
     
     if (scrollRef.current) {
-      const cardWidth = 350; // Match this with your CSS card width
+      const cardWidth = window.innerWidth <= 768 ? window.innerWidth : 280;
       scrollRef.current.scrollBy({
-        left: direction === 'left' ? -(cardWidth + 25) : (cardWidth + 25), // cardWidth + gap
+        left: direction === 'left' ? -(cardWidth ) : (cardWidth ),
         behavior: 'smooth'
       });
     }
   };
 
   return (
-  <>
-    <div className="services__container">
-         <Element name="services" className="services">
+    <Element name="services" className="services">
+      <div className="services__container">
         <h2 className="services__title">Our Specialized Services</h2>
-             </Element>  
         <div className="services__wrapper">
           <button 
             onClick={() => scroll('left')}
@@ -121,6 +119,8 @@ const HorizontalScroll12 = () => {
             className="services__carousel"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => setIsHovered(false)}
           >
             {services.map((service) => (
               <div 
@@ -148,8 +148,7 @@ const HorizontalScroll12 = () => {
           </button>
         </div>
       </div>
-      
-   </>
+    </Element>
   );
 };
 

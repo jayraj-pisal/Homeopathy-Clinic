@@ -1,0 +1,24 @@
+.whatsapp-icon {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+    width: 60px;
+  height: 60px;
+  object-fit:cover;
+  border-radius: 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width:480px) {
+  .whatsapp-icon{
+  width: 30px;
+  height: 30px;
+  bottom: 10px;
+  left: 10px;
+  } 
+}

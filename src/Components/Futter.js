@@ -1,11 +1,12 @@
 import React from 'react';
+import { Element } from 'react-scroll';
 import '../Stylesheet/Futter.css';
 
 const DrZanjePage = () => {
   return (
 
         <>
-
+<Element name="contact">
       {/* Footer */}
       <div className="footer">
          <div className="card1">
@@ -18,13 +19,13 @@ const DrZanjePage = () => {
             </div>
         <div className="footer-content">
             
-          <p>© {new Date().getFullYear()} Dr. Zanje's Homeopathy Clinic</p>
+          {/* <p>© {new Date().getFullYear()} Dr. Zanje's Homeopathy Clinic</p> */}
           <p className="company-credit">
             Developed by <a href="https://kamdhaam.com" target="_blank" rel="noopener noreferrer">Kamdhaam Company</a>
           </p>
         </div>
         </div>
-
+</Element>
     </>
   );
 };

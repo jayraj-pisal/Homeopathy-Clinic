@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import log from '../logo.jpg'; 
 import { Link } from 'react-scroll';
 import '../Stylesheet/Navbar.css';  
@@ -7,6 +7,19 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        document.querySelector('.custom-navbar').classList.add('scrolled');
+      } else {
+        document.querySelector('.custom-navbar').classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,7 +77,7 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-text">About Us</span>
-                <span className="nav-text-sm">About</span>
+                <span className="nav-text-sm">About Us</span>
               </Link>
             </li>  
             <li className="nav-item">
@@ -97,20 +110,22 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="nav-text">Testimonials</span>
-                <span className="nav-text-sm">Reviews</span>
+                <span className="nav-text-sm">Testimonials</span>
+              </Link>
+            </li>
+              <li className="nav-item">
+              <Link className="nav-link" to="contact" 
+                smooth={true} 
+                duration={500} 
+                offset={-80}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="nav-text">Contact Us</span>
+                <span className="nav-text-sm">Contact Us</span>
               </Link>
             </li>
           </ul>
-          <div className="contact-info1">
-          <span className="contact-item">
-            <FaPhone className="contact-icon" /> +91 1234567890
-          </span>
-          <span className="contact-item">
-            <FaEnvelope className="contact-icon" /> dr.zanje@example.com
-          </span>
-          <span className="contact-item">
-            <FaMapMarkerAlt className="contact-icon" /> 123 Clinic St, Health City
-          </span>
+          <div className="contact-info">
           </div>
         </nav>
       </nav>

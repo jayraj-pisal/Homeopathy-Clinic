@@ -1,151 +1,192 @@
-/* Flutter-inspired styles for medical clinic */
-.flutter-app {
-  font-family: 'Roboto', sans-serif;
-  max-width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Futter.css */
 
-/* Cards */
-.card1 {
-    left: 0;
-  border-radius: 8px;
-  padding: 4rem;
-  margin-bottom: 20px;
-  margin-top: 50px;
-}
-
-.hero-card {
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  text-align: center;
-  padding: 40px 24px;
-}
-
-/* Services Grid */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.service-card {
-  text-align: center;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
-}
-
-.service-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
-/* Buttons */
-.raised-button {
-  background: #0d6efd;
+.footer {
+  background: linear-gradient(135deg, #2a5a78 0%, #1a3a4a 100%);
   color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.2s;
-  margin-top: 16px;
+  padding: 50px 20px 30px;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
-.raised-button:hover {
-  background: #0b5ed7;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
+.footer::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 200;
-}
-
-.appointment-card {
-  background: white;
-  border-radius: 8px;
-  padding: 24px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
-}
-
-.input-field {
-  margin-bottom: 16px;
-}
-
-.input-field label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.input-field input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  height: 100%;
+  /* background: url('') repeat; */
+  opacity: 0.05;
+  z-index: 0;
 }
 
-/* Footer */
-.footer {
-  background: #333;
+.card1 {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.card1 h2 {
   color: white;
-  padding: 16px;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
   text-align: center;
-  font-size: 0.9rem;
+}
+
+.card1 h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  margin: 0;
+  color: #f0f0f0;
+}
+
+.contact-info p::before {
+  font-size: 1.3rem;
+}
+
+.footer-content {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
 }
 
 .company-credit {
-  margin-top: 8px;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.9rem;
 }
 
 .company-credit a {
-  color: #bbdefb;
+  color: #8BC34A;
   text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .app-title {
-    font-size: 1.2rem;
+.company-credit a:hover {
+  color: #4CAF50;
+  text-decoration: underline;
+}
+
+/* Leaf decoration elements */
+.footer-decoration {
+  position: absolute;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.footer-decoration.leaf1 {
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  transform: rotate(-30deg);
+}
+
+.footer-decoration.leaf2 {
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  transform: rotate(20deg);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 15px 25px;
   }
   
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
+  .card1 {
+    padding: 25px 20px;
+    margin-bottom: 30px;
+  }
+  
+  .card1 h2 {
+    font-size: 1.5rem;
+  }
+  
+  .contact-info p {
+    font-size: 1rem;
+    gap: 8px;
+  }
+  
+  .footer-content {
+    padding-top: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 10px 20px;
+  }
+  
+  .card1 {
+    padding: 20px 15px;
+    margin-bottom: 25px;
+  }
+  
+  .card1 h2 {
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+  }
+  
+  .card1 h2::after {
+    width: 60px;
+    height: 2px;
+  }
+  
+  .contact-info {
+    gap: 12px;
+  }
+  
+  .contact-info p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+  
+  .company-credit {
+    font-size: 0.8rem;
   }
 }

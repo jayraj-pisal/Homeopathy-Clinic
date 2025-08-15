@@ -87,9 +87,9 @@ const About1 = () => {
             />
           </div>
           <div className="about-section-text">
-            <h2 className="section-title">About Dr. Sanjay Zanje</h2>
+            <h2 className="section-title">About Dr. Rasik Zanje</h2>
             <p className="section-description">
-              Dr. Sanjay Zanje is our founder and principal homeopathic consultant with over 15 years 
+              Dr. Rasik Zanje is our founder and principal homeopathic consultant with over 15 years 
               of clinical experience. A graduate of the prestigious Mumbai Homeopathic Medical College, 
               Dr. Zanje has helped thousands of patients regain their health through homeopathy.
             </p>
@@ -118,34 +118,6 @@ const About1 = () => {
       </div>
 
       {/* Philosophy Section */}
-      <div className="philosophy-section animate-fade-in">
-        <h2 className="philosophy-title">Our Treatment Philosophy</h2>
-        <div className="philosophy-points">
-          {[
-            {
-              title: "Holistic Approach",
-              desc: "We treat the whole person, not just the disease symptoms",
-              icon: "🌱"
-            },
-            {
-              title: "Gentle Healing",
-              desc: "Our remedies work with your body's natural healing processes",
-              icon: "✨"
-            },
-            {
-              title: "Personalized Care",
-              desc: "Each treatment plan is customized to your unique needs",
-              icon: "🎯"
-            }
-          ].map((item, index) => (
-            <div key={index} className="philosophy-card">
-              <div className="philosophy-icon">{item.icon}</div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   </Element>
   );

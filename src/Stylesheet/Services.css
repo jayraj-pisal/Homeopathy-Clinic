@@ -1,147 +1,234 @@
-/* Services Section */
+/* Services.css - Fully Merged & Optimized */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Base Styles */
 .services {
-  padding: 4rem 0;
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  padding: 40px 15px;
+  background-color: #f8fafc;
 }
 
 .services__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-  transform: translateY(30px);
-  background-color: #f9f9f9;
 }
 
 .services__title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: #2a5a78;
+  margin-bottom: 30px;
+  position: relative;
+  font-weight: 700;
 }
 
+.services__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+}
+
+/* Carousel Container */
 .services__wrapper {
   position: relative;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  width: 90.8%;
+  width: 100%;
+  overflow: hidden;
 }
 
+/* Carousel */
 .services__carousel {
   display: flex;
   overflow-x: auto;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  gap: 20px;
-  padding: 20px 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  width: 100%;
+  gap: 0;
+  padding: 5px 0; /* Add slight padding for shadow visibility */
 }
 
-.services__carousel::-webkit-scrollbar {
-  display: none;
-}
-
+/* Service Cards - Mobile First */
 .services__card {
-  flex: 0 0 300px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  min-width: 100%;
   background: white;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  border-top: 5px solid var(--card-color);
+  border-radius: 10px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin: 0 10px;
+  border-top: 4px solid var(--card-color);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .services__card:hover {
-  transform: translateY(-10px);
-
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .services__icon-container {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  background: linear-gradient(135deg, rgba(42, 90, 120, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
   border-radius: 50%;
-  background-color: var(--card-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  color: white;
-
-}
-
-.services__icon {
-  font-size: 1.5rem;
+  color: var(--card-color);
+  font-size: 1.3rem;
 }
 
 .services__card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 1.2rem;
+  color: #2a5a78;
+  text-align: center;
+  margin-bottom: 12px;
 }
 
 .services__description {
-  color: #666;
+  font-size: 0.9rem;
+  color: #555;
   line-height: 1.6;
+  text-align: center;
 }
 
+/* Navigation Buttons - Hidden on Mobile */
 .services__nav-button {
+  display: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   background: white;
   border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  color: var(--card-color);
-}
-
-.services__nav-button--left {
-  left: -20px;
-}
-
-.services__nav-button--right {
-  right: -20px;
-}
-
-.services__indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.services__indicator-dot {
-  width: 10px;
-  height: 10px;
   border-radius: 50%;
-  background-color: #ccc;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  color: #2a5a78;
+  cursor: pointer;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-.services__indicator-dot--active {
-  background-color: var(--card-color);
+.services__nav-button:hover {
+  background: #2a5a78;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
-@media (max-width: 768px) {
-  .services__card {
-    flex: 0 0 250px;
+/* Auto-Scroll Indicators */
+/* .services__auto-scroll-indicator {
+  display: none; */
+  /* text-align: center;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #7a7a7a;
+} */
+
+/* Tablet Styles (768px+) */
+@media (min-width: 768px) {
+  .services {
+    padding: 50px 20px;
   }
-  
+
+  .services__title {
+    font-size: 2rem;
+  }
+
+  .services__carousel {
+    gap: 20px;
+    padding: 0 30px;
+  }
+
+  .services__card {
+    min-width: calc(50% - 10px);
+    margin: 0;
+  }
+
+  /* Show navigation buttons */
+  .services__nav-button {
+    display: flex;
+  }
+
   .services__nav-button--left {
     left: 0;
   }
-  
+
   .services__nav-button--right {
     right: 0;
   }
+
+  /* Auto-scroll indicator */
+  .services__auto-scroll-indicator {
+    display: block;
+  }
 }
+
+/* Desktop Styles (992px+) */
+@media (min-width: 992px) {
+  .services {
+    padding: 60px 0;
+  }
+
+  .services__title {
+    font-size: 2.4rem;
+  }
+
+  .services__carousel {
+    padding: 20px 0;
+  }
+
+  .services__card {
+    min-width: 280px;
+    padding: 30px 20px;
+  }
+
+  .services__icon-container {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .services__card h3 {
+    font-size: 1.3rem;
+  }
+
+  .services__description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services__card {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* Staggered animation delays */
+.services__card:nth-child(1) { animation-delay: 0.1s; }
+.services__card:nth-child(2) { animation-delay: 0.2s; }
+.services__card:nth-child(3) { animation-delay: 0.3s; }
+.services__card:nth-child(4) { animation-delay: 0.4s; }
+.services__card:nth-child(5) { animation-delay: 0.5s; }
+.services__card:nth-child(6) { animation-delay: 0.6s; }
+.services__card:nth-child(7) { animation-delay: 0.7s; }
+.services__card:nth-child(8) { animation-delay: 0.8s; }
